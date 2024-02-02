@@ -11,7 +11,8 @@ summariseEpisodesToConsole(gameOfThronesEpisodes);
 
 //configure the server's route handlers
 app.get("/", (req, res) => {
-    res.render("pages/index");
+    console.log (gameOfThronesEpisodes[1].season)
+    res.render("pages/index", {episodes:gameOfThronesEpisodes});
 });
 
 app.get("/db-test", async (req, res) => {
