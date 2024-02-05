@@ -2,17 +2,26 @@ const { app } = require("./support/setupExpress");
 const { query } = require("./support/db");
 const { gameOfThronesEpisodes } = require("./data/gameOfThronesData");
 
-/** 
- @typedef {import('./data/episodeType').Episode} Episode
-*/
 
-//You can delete this once you see the episodes have loaded ok.
-summariseEpisodesToConsole(gameOfThronesEpisodes);
 
-//configure the server's route handlers
+// Removed temporary console logging
+// summariseEpisodesToConsole(gameOfThronesEpisodes);
+
+// Configure the server's route handlers
+
+const level100Array = gameOfThronesEpisodes.map((obj) => ({
+    name: obj.name,
+    season: obj.season,
+    episode: obj.number,
+    image: obj.image,
+    summary: obj.summary,
+}));
+
 app.get("/", (req, res) => {
-    console.log (gameOfThronesEpisodes[1].season)
-    res.render("pages/index", {episodes:gameOfThronesEpisodes});
+    res.render("pages/index", {
+        episodeArray: level100Array,
+        movie: "Bring it on",
+    });
 });
 
 app.get("/db-test", async (req, res) => {
@@ -22,29 +31,14 @@ app.get("/db-test", async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.error(err);
-        res.status(500).send(
-            "Sorry, an error occurred on the server.  Ask the dev team to check the server logs at time " +
-                new Date(),
-        );
+        res.status(500).send("Sorry, an error occurred on the server.");
     }
 });
 
-/**
- * You can delete this function.  It demonstrates the use of the Episode type in JSDoc.
- * @param {Episode[]} episodes
- * @returns void
- */
-function summariseEpisodesToConsole(episodes) {
-    console.log(`Loaded ${episodes.length} episodes`);
-    console.log("The first episode has name of " + episodes[0].name);
-}
-
-// use the environment variable PORT, or 3000 as a fallback if it is undefined
 const PORT_NUMBER = process.env.PORT ?? 3000;
 
-//start the server listening indefinitely
 app.listen(PORT_NUMBER, () => {
     console.log(
-        `Your express app started listening on ${PORT_NUMBER} at ${new Date()}`,
+        `Your express app started listening on ${PORT_NUMBER} at ${new Date()}`
     );
 });

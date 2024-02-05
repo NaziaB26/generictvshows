@@ -1,15 +1,14 @@
-<%- include("../partials/header.ejs", {title: "Main Page"}) %>
-Season 1
-
-<%= episodes[0].name %>
-<img src="<%= episodes[0].image.medium %>">
-
-<p>This content comes from <code>/views/pages/index.ejs</code></p>
-
+<%- include("../partials/header.ejs", { title: "Main Page" }) %>
+<p> Movie: <%= movie%> </p>
 <section>
-  <p><a href="/db-test">Clicking this link will test to see if your db connection is ok</a></p>
+ <% for (let e of episodeArray) { %>
+    <div class="card">
+        <h3>Title: <%= e.name %></h3>
+        <img src="<%= e.image.medium %>" alt="Episode Cover Image">
+        <p>Summary: <%= e.summary %></p>
+    </div>
+    <% }%>
 
-  <p>Delete all this text and make these pages your own!</p>
 </section>
 
 <%- include("../partials/footer.ejs") %>
