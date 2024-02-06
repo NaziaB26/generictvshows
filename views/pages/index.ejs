@@ -1,14 +1,18 @@
 <%- include("../partials/header.ejs", { title: "Main Page" }) %>
-<p> Movie: <%= movie%> </p>
-<section>
- <% for (let e of episodeArray) { %>
+
+<main>
+ <% for (let episode of episodeArray) { %>
     <div class="card">
-        <h3>Title: <%= e.name %></h3>
-        <img src="<%= e.image.medium %>" alt="Episode Cover Image">
-        <p>Summary: <%= e.summary %></p>
+    
+        <h3>Title: <%= episode.name %> <%= makeEpisodeCode(episode) %></h3>
+        <img src="<%= episode.image.medium %>" alt="Episode Cover Image"/>
+        <p>Summary: <%= episode.summary %></p>
+        <p>airtime: <%= episode.airtime %></p>
     </div>
     <% }%>
 
-</section>
+</main>
+
+
 
 <%- include("../partials/footer.ejs") %>
