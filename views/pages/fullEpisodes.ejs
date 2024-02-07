@@ -1,0 +1,17 @@
+
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/fullEpisodes">Full Episodes</a></li>
+    <li><a href="/Contact">Contact Us</a></li>
+</ul>
+
+
+<% for (let episode of episodeArray) { %>
+    <div class="card">
+        <a href="/singleEpisode/<%= episode.id%>">
+            <h3>Title: <%= episode.name %> <%= makeEpisodeCode(episode)%></h3>
+        </a>
+        <img src="<%= episode.image.medium %>" alt="Episode Cover Image"/>
+        <p>Summary: <%= episode.summary %></p>
+    </div>
+    <% }%>

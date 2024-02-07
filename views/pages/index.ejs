@@ -1,18 +1,29 @@
-<%- include("../partials/header.ejs", { title: "Game of Thrones" }) %>
 
-<main>
- <% for (let episode of episodeArray) { %>
-    <div class="card">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
     
-        <h3>Title: <%= episode.name %> <%= makeEpisodeCode(episode) %></h3>
-        <img src="<%= episode.image.medium %>" alt="Episode Cover Image"/>
-        <p>Summary: <%= episode.summary %></p>
-        <p>airtime: <%= episode.airtime %></p>
-    </div>
-    <% }%>
-
-</main>
-
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/fullEpisodes">Full Episodes</a></li>
+            <li><a href="/Contact">Contact Us</a></li>
+        </ul>
+    </nav>
+    <h1>Welcome to the Game of Thrones World!</h1>
+    
+    <section>
+        <p><a href="/db-test">Clicking this link will test to see if your db connection is ok</a></p>
+      </section>
 
 
 <%- include("../partials/footer.ejs") %>
+
+</body>
+</html>
+
+
