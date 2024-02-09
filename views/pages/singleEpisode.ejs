@@ -1,0 +1,12 @@
+<%- include("../partials/nav.ejs") %>
+
+<% for (let episode of gameofThronesEpisodes) { %>
+    <div class="card">
+        <h3>Title: <%= episode.name %> <%= makeEpisodeCode(episode)%></h3>
+        <img src="<%= episode.image.original %>" alt="Episode Cover Image"/>
+        <p>Summary: <%= episode.summary %></p>
+        <p>airtime: <%= episode.airtime %></p>
+        <p>runtime: <%= episode.runtime %></p>
+        <p>rating: <%= episode.rating.average %></p>
+    </div>
+    <% }%>
